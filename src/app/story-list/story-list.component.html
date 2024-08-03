@@ -1,0 +1,38 @@
+<div class="story-list-container">
+    <div class="story-list-header">
+        <h1>Story List</h1>
+    </div>
+
+    <div class="filters-container">
+        <div class="select-story-filter">
+            <mat-form-field appearance="outline" class="story-select-field">
+                <mat-label>Select Stories</mat-label>
+                <mat-select (selectionChange)="storyFilter($event)" multiple>
+                    <mat-option [value]="story" *ngFor="let story of stories">{{ story }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="search-story-filter">
+            <mat-form-field appearance="outline" class="search-field">
+                <mat-label>Search for Story</mat-label>
+                <input matInput [(ngModel)]="searchQuery"  placeholder="Type to search...">
+                <button mat-icon-button matSuffix>
+                    <mat-icon>search</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="story-card-container">
+        <mat-card class="example-card" *ngFor="let story of selectedStories | filter:searchQuery">
+            <mat-card-header>
+                <mat-card-title>{{ story.title }}</mat-card-title>
+                <mat-card-subtitle>{{ story.type || 'Unknown Category' }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+                <a mat-button href="{{ story.url }}" target="_blank">Link</a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
