@@ -14,8 +14,8 @@ export class HackerNewsService {
         return this.http.get(`${API_URL}/api/HackerNews/NewStories`,);
     }
 
-    newStoriesList(data: any): any {
-        return this.http.get(`${API_URL}/api/HackerNews/Item` + '?Id=' + data,);
-    }
+    // newStoriesList(data: any): any {
+    //     return this.http.get(`${API_URL}/api/HackerNews/Item` + '?Id=' + data,);
+    // }
 
 }
